@@ -140,6 +140,7 @@ const config = {
     "db"
   ],
   "activeProvider": "mongodb",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -149,7 +150,8 @@ const config = {
     }
   },
   "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwNCi8vIGxlYXJuIG1vcmUgYWJvdXQgaXQgaW4gdGhlIGRvY3M6IGh0dHBzOi8vcHJpcy5seS9kL3ByaXNtYS1zY2hlbWENCg0KZ2VuZXJhdG9yIGNsaWVudCB7DQogIHByb3ZpZGVyID0gInByaXNtYS1jbGllbnQtanMiDQogIG91dHB1dCAgID0gIi4vZ2VuZXJhdGVkL2NsaWVudCINCn0NCg0KZGF0YXNvdXJjZSBkYiB7DQogIHByb3ZpZGVyID0gIm1vbmdvZGIiDQogIHVybCAgICAgID0gZW52KCJEQVRBQkFTRV9VUkwiKQ0KfQ0KDQptb2RlbCBDb250YWN0IHsNCiAgaWQgICAgICAgICAgICAgIFN0cmluZyBAaWQgQGRlZmF1bHQoYXV0bygpKSBAbWFwKCJfaWQiKSBAZGIuT2JqZWN0SWQgDQogIG5hbWUgICAgICAgICAgICBTdHJpbmc/DQogIGltYWdlICAgICAgICAgICBTdHJpbmc/DQogIGNsb3VkaW5hcnlfaWQgICBTdHJpbmc/DQogDQogQEBtYXAoImNvbnRhY3RzIikgDQp9DQoNCg==",
-  "inlineSchemaHash": "86a238495610aba4cf9406e3d40193e90fa85cd212ce950c2de08a1e28ce23ed"
+  "inlineSchemaHash": "86a238495610aba4cf9406e3d40193e90fa85cd212ce950c2de08a1e28ce23ed",
+  "noEngine": false
 }
 
 const fs = require('fs')
