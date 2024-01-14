@@ -47,7 +47,8 @@ const TestFetch = () => {
                 setData({...data,image:newBlob.url})
                 const dataResponse = await fetchAddContact(
                     data.name,
-                    data.password
+                    data.password,
+                    newBlob.url
                          );  //custom fetch function  utils/index.ts
                   
          
