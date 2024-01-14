@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/app/libs/prismadb';
 
 export async function POST(req: NextRequest) {
-  if (req.method === 'POST') {
 
     try {
       const data = await req.json();
@@ -30,10 +29,4 @@ export async function POST(req: NextRequest) {
         { status: 500 }
       );
     }
-  } else {
-    return new Response(
-      JSON.stringify({ message: 'Method Not Allowed' }),
-      { status: 500 }
-    );
-  }
-}
+  } 
