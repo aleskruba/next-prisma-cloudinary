@@ -78,7 +78,8 @@ export default function AvatarUploadPage() {
   
           const dataResponse = await fetchAddContact(
             data.name,
-            data.password
+            data.password,
+            data.image
                  );  //custom fetch function  utils/index.ts
        
                  if(dataResponse.status !== 200) {
