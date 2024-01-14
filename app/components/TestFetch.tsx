@@ -3,12 +3,13 @@
 import React, { ChangeEvent, useState,useRef } from 'react';
 import type { PutBlobResult } from '@vercel/blob';
 import { fetchAddContactTEST, fetchImage } from '@/utils';
+import ContactData from '@/types';
 
 const TestFetch = () => {
 
     const inputFileRef = useRef<HTMLInputElement>(null);
     const [blob, setBlob] = useState<PutBlobResult | null>(null);
-    const [data, setData] = useState({
+    const [data, setData] = useState<ContactData>({
         name: '',
         password:"",
         image: "",
