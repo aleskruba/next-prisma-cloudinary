@@ -87,6 +87,26 @@ const TestFetch = () => {
             }
             else {
                 console.log('no file selected')
+                setData({...data,image:''})
+  
+                const dataResponse = await fetchAddContactTEST(
+                  data.name,
+                  data.password,
+                  data.image
+                       );  //custom fetch function  utils/index.ts
+             
+                       if(dataResponse.status !== 200) {
+                  console.log('something went wrong')
+                }
+      
+                setData({
+                  name: "",
+                  password:"",
+                  image: "",
+                })
+                console.log(dataResponse)
+      
+                return dataResponse
             }
         }    
 }
