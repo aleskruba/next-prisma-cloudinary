@@ -2,7 +2,6 @@
 
 import React, { ChangeEvent, useState,useRef } from 'react';
 import type { PutBlobResult } from '@vercel/blob';
-import { fetchAddContact } from '@/utils';
 
 const TestFetch = () => {
 
@@ -45,21 +44,16 @@ const TestFetch = () => {
 
         
                 setData({...data,image:newBlob.url})
-           /*      const dataResponse = await fetchAddContact(
-                    data.name,
-                    data.password,
-                    newBlob.url
-                         );  // */
+                const dataResponse = await fetch('/api/testpost', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                      
+                    },
+                    body: JSON.stringify({ name:data.name, password:data.password, image:newBlob.url }),
+                  });
                   
-                         const dataResponse = await fetch('/api/newcontact', {
-                            method: 'POST',
-                            headers: {
-                              'Content-Type': 'application/json',
-                              
-                            },
-                            body: JSON.stringify({ name:data.name, password:data.password, image: newBlob.url}),
-                          });
-                
+         
         
                   if(dataResponse.status !== 200) {
                     console.log('something went wrong')
