@@ -66,7 +66,17 @@ const TestFetch = () => {
                   if(dataResponse.status !== 200) {
                     console.log('something went wrong')
                   }
-
+                  
+                  setData({
+                    name: "",
+                    password:"",
+                    image: "",
+                  })
+        
+                  if (inputFileRef.current) {
+                    inputFileRef.current.value = '';
+                  }
+                  
                   console.log(dataResponse)
         
               return dataResponse
