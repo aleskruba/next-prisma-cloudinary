@@ -1,14 +1,13 @@
 'use client';
 
-import ContactData from '@/types';
-import { fetchAddContact, fetchImage } from '@/utils';
+import { fetchImage } from '@/utils';
 import type { PutBlobResult } from '@vercel/blob';
 import React, { ChangeEvent, useState,useRef } from 'react';
 
 export default function AvatarUploadPage() {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
-  const [data, setData] = useState<ContactData>({
+  const [data, setData] = useState({
     name: "",
     password:"",
     image: "",
@@ -33,7 +32,7 @@ export default function AvatarUploadPage() {
     if (file) {
     
     
-        const imageResponse = await fetchImage(file); //custom fetch function  utils/index.ts
+        const imageResponse = await fetchImage(file); //custom fetch function  utils/inde.ts
         const newBlob = (await imageResponse.json()) as PutBlobResult;
         setBlob(newBlob);
 
@@ -42,12 +41,13 @@ export default function AvatarUploadPage() {
 
         setData({...data,image:newBlob.url})
     
-        const dataResponse = await fetchAddContact(
-          data.name,
-          data.password,
-          newBlob.url
-        );  //custom fetch function  utils/index.ts
-
+        const dataResponse = await fetch('/api/newcontact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({...data,image:newBlob.url}), // Sending the message in the request body
+          });  
 
           if(dataResponse.status !== 200) {
             console.log('something went wrong')
@@ -76,12 +76,15 @@ export default function AvatarUploadPage() {
 
           setData({...data,image:''})
   
-          const dataResponse = await fetchAddContact(
-            data.name,
-            data.password
-                 );  //custom fetch function  utils/index.ts
-       
-                 if(dataResponse.status !== 200) {
+          const dataResponse = await fetch('/api/newcontact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body:  JSON.stringify({...data,image:''}),// Sending the message in the request body
+          });  
+  
+          if(dataResponse.status !== 200) {
             console.log('something went wrong')
           }
 
