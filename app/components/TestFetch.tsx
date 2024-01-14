@@ -153,6 +153,11 @@ const TestFetch = () => {
         </label>
         <button type="submit">save new Contact</button>
         </form>
+        {blob && (
+        <div>
+          Blob url: <a href={blob.url}>{blob.url}</a>
+        </div>
+      )}
     </div>
 
 
