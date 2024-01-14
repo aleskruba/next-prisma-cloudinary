@@ -14,7 +14,8 @@ export async function fetchImage(file: File | null | undefined)  {
     password: string,
     image?: string
   ): Promise<Response> {
-    const dataResponse = await fetch('/api/addcontact', {
+    //const dataResponse = await fetch('/api/addcontact', {
+    const dataResponse = await fetch('/api/newcontact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
