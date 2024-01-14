@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import ContactData from '@/types';
 import { fetchAddContact, fetchImage } from '@/utils';
@@ -115,7 +115,8 @@ export default function AvatarUploadPage() {
               type="text"
               name="name"
               value={data.name}
-              onChange={handleChange}/>
+              onChange={handleChange}
+              autoComplete="username"/>
                 
                 <input
               required
@@ -124,7 +125,8 @@ export default function AvatarUploadPage() {
               type="password"
               name="password"
               value={data.password}
-              onChange={handleChange}/>
+              onChange={handleChange}
+              autoComplete="current-password"/>
    
    
    <label className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center cursor-pointer">
