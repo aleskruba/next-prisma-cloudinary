@@ -103,8 +103,8 @@ Prisma.NullTypes = {
 exports.Prisma.ContactScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  image: 'image',
-  cloudinary_id: 'cloudinary_id'
+  password: 'password',
+  image: 'image'
 };
 
 exports.Prisma.SortOrder = {

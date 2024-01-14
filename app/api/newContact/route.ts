@@ -1,32 +1,38 @@
-import { put } from '@vercel/blob';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/app/libs/prismadb';
 
-export async function POST(request: Request): Promise<NextResponse> {
-  const { searchParams } = new URL(request.url);
-  const filename = searchParams.get('filename') || '';
+export async function POST(req: NextRequest) {
+  if (req.method === 'POST') {
+    try {
+      const data = await req.json();
+      console.log(data);
+ 
+      const { name,image,password} = data;
+      console.log(name,image,password);
 
-
-  if (filename && request.body) {
-  // ⚠️ The below code is for App Router Route Handlers only
-  const blob = await put(filename, request.body, {
-    access: 'public',
-  });
-
-  // Here's the code for Pages API Routes:
-  // const blob = await put(filename, request, {
-  //   access: 'public',
-  // });
-
-  return NextResponse.json(blob);
+       if (data) {
+      const contact = await prisma.contact.create({
+        data: {
+            name,
+            password,
+            image
+          }
+     
+      });  
+    }
+ 
+      return NextResponse.json({ message: 'success' }, { status: 200 });
+    } catch (error) {
+      console.log(error);
+      return new Response(
+        JSON.stringify({ message: 'Failed to process the message' }),
+        { status: 500 }
+      );
+    }
+  } else {
+    return new Response(
+      JSON.stringify({ message: 'Method Not Allowed' }),
+      { status: 500 }
+    );
+  }
 }
-else {
-    return NextResponse.json({mssage:'no filename detected'});
-}
-}
-
-// The next lines are required for Pages API Routes only
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };

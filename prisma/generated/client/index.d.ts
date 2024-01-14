@@ -833,22 +833,22 @@ export namespace Prisma {
   export type ContactMinAggregateOutputType = {
     id: string | null
     name: string | null
+    password: string | null
     image: string | null
-    cloudinary_id: string | null
   }
 
   export type ContactMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    password: string | null
     image: string | null
-    cloudinary_id: string | null
   }
 
   export type ContactCountAggregateOutputType = {
     id: number
     name: number
+    password: number
     image: number
-    cloudinary_id: number
     _all: number
   }
 
@@ -856,22 +856,22 @@ export namespace Prisma {
   export type ContactMinAggregateInputType = {
     id?: true
     name?: true
+    password?: true
     image?: true
-    cloudinary_id?: true
   }
 
   export type ContactMaxAggregateInputType = {
     id?: true
     name?: true
+    password?: true
     image?: true
-    cloudinary_id?: true
   }
 
   export type ContactCountAggregateInputType = {
     id?: true
     name?: true
+    password?: true
     image?: true
-    cloudinary_id?: true
     _all?: true
   }
 
@@ -950,8 +950,8 @@ export namespace Prisma {
   export type ContactGroupByOutputType = {
     id: string
     name: string | null
+    password: string | null
     image: string | null
-    cloudinary_id: string | null
     _count: ContactCountAggregateOutputType | null
     _min: ContactMinAggregateOutputType | null
     _max: ContactMaxAggregateOutputType | null
@@ -974,15 +974,15 @@ export namespace Prisma {
   export type ContactSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    password?: boolean
     image?: boolean
-    cloudinary_id?: boolean
   }, ExtArgs["result"]["contact"]>
 
   export type ContactSelectScalar = {
     id?: boolean
     name?: boolean
+    password?: boolean
     image?: boolean
-    cloudinary_id?: boolean
   }
 
 
@@ -992,8 +992,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string | null
+      password: string | null
       image: string | null
-      cloudinary_id: string | null
     }, ExtArgs["result"]["contact"]>
     composites: {}
   }
@@ -1417,8 +1417,8 @@ export namespace Prisma {
   interface ContactFieldRefs {
     readonly id: FieldRef<"Contact", 'String'>
     readonly name: FieldRef<"Contact", 'String'>
+    readonly password: FieldRef<"Contact", 'String'>
     readonly image: FieldRef<"Contact", 'String'>
-    readonly cloudinary_id: FieldRef<"Contact", 'String'>
   }
     
 
@@ -1742,8 +1742,8 @@ export namespace Prisma {
   export const ContactScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    image: 'image',
-    cloudinary_id: 'cloudinary_id'
+    password: 'password',
+    image: 'image'
   };
 
   export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
@@ -1807,15 +1807,15 @@ export namespace Prisma {
     NOT?: ContactWhereInput | ContactWhereInput[]
     id?: StringFilter<"Contact"> | string
     name?: StringNullableFilter<"Contact"> | string | null
+    password?: StringNullableFilter<"Contact"> | string | null
     image?: StringNullableFilter<"Contact"> | string | null
-    cloudinary_id?: StringNullableFilter<"Contact"> | string | null
   }
 
   export type ContactOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    password?: SortOrder
     image?: SortOrder
-    cloudinary_id?: SortOrder
   }
 
   export type ContactWhereUniqueInput = Prisma.AtLeast<{
@@ -1824,15 +1824,15 @@ export namespace Prisma {
     OR?: ContactWhereInput[]
     NOT?: ContactWhereInput | ContactWhereInput[]
     name?: StringNullableFilter<"Contact"> | string | null
+    password?: StringNullableFilter<"Contact"> | string | null
     image?: StringNullableFilter<"Contact"> | string | null
-    cloudinary_id?: StringNullableFilter<"Contact"> | string | null
   }, "id">
 
   export type ContactOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    password?: SortOrder
     image?: SortOrder
-    cloudinary_id?: SortOrder
     _count?: ContactCountOrderByAggregateInput
     _max?: ContactMaxOrderByAggregateInput
     _min?: ContactMinOrderByAggregateInput
@@ -1844,53 +1844,53 @@ export namespace Prisma {
     NOT?: ContactScalarWhereWithAggregatesInput | ContactScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Contact"> | string
     name?: StringNullableWithAggregatesFilter<"Contact"> | string | null
+    password?: StringNullableWithAggregatesFilter<"Contact"> | string | null
     image?: StringNullableWithAggregatesFilter<"Contact"> | string | null
-    cloudinary_id?: StringNullableWithAggregatesFilter<"Contact"> | string | null
   }
 
   export type ContactCreateInput = {
     id?: string
     name?: string | null
+    password?: string | null
     image?: string | null
-    cloudinary_id?: string | null
   }
 
   export type ContactUncheckedCreateInput = {
     id?: string
     name?: string | null
+    password?: string | null
     image?: string | null
-    cloudinary_id?: string | null
   }
 
   export type ContactUpdateInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    cloudinary_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ContactUncheckedUpdateInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    cloudinary_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ContactCreateManyInput = {
     id?: string
     name?: string | null
+    password?: string | null
     image?: string | null
-    cloudinary_id?: string | null
   }
 
   export type ContactUpdateManyMutationInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    cloudinary_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ContactUncheckedUpdateManyInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    cloudinary_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -1927,22 +1927,22 @@ export namespace Prisma {
   export type ContactCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    password?: SortOrder
     image?: SortOrder
-    cloudinary_id?: SortOrder
   }
 
   export type ContactMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    password?: SortOrder
     image?: SortOrder
-    cloudinary_id?: SortOrder
   }
 
   export type ContactMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    password?: SortOrder
     image?: SortOrder
-    cloudinary_id?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
