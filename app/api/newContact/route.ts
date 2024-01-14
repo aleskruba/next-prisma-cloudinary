@@ -3,6 +3,7 @@ import prisma from '@/app/libs/prismadb';
 
 export async function POST(req: NextRequest) {
   if (req.method === 'POST') {
+
     try {
       const data = await req.json();
       console.log(data);

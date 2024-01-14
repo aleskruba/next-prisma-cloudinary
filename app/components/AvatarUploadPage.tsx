@@ -27,12 +27,14 @@ export default function AvatarUploadPage() {
   onSubmit={async (event) => {
     event.preventDefault();
 
-    if (!inputFileRef.current?.files) {
-      throw new Error("No file selected");
-    }
+     if (inputFileRef.current?.files) {
+    //  throw new Error("No file selected");
+
 
     const file = inputFileRef.current?.files[0];
-
+     console.log(file); 
+    if (file) {
+    
     const imageResponse = await fetch(
       `/api/newimage?filename=${file?.name}`,
       {
@@ -55,11 +57,44 @@ export default function AvatarUploadPage() {
             },
             body: JSON.stringify({...data,image:newBlob.url}), // Sending the message in the request body
           });  
-
+          
+          setData({
+            name: "",
+            password:"",
+            image: "",
+          })
           return dataResponse
+          
         }
+      }
+        else {
+
+          setData({...data,image:''})
+  
+          const dataResponse = await fetch('/api/newcontact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body:  JSON.stringify({...data,image:''}),// Sending the message in the request body
+          });  
+  
+          setData({
+            name: "",
+            password:"",
+            image: "",
+          })
+          return dataResponse
+  
+        }
+      
+      
+       
+      }
 
 
+
+  
 
 }}
   
@@ -85,8 +120,8 @@ export default function AvatarUploadPage() {
               onChange={handleChange}/>
    
    
-        <input name="file" ref={inputFileRef} type="file" required />
-        <button type="submit">Upload</button>
+        <input name="file" ref={inputFileRef} type="file"  />
+        <button type="submit">save new Contact</button>
       </form>
 
 
