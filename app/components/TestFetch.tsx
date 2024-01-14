@@ -76,6 +76,7 @@ const TestFetch = () => {
                   if (inputFileRef.current) {
                     inputFileRef.current.value = '';
                   }
+                  setBlob(null)
                   
                   console.log(dataResponse)
         
