@@ -8,24 +8,18 @@ const TestFetch = () => {
     const inputFileRef = useRef<HTMLInputElement>(null);
     const [blob, setBlob] = useState<PutBlobResult | null>(null);
     const [data, setData] = useState({
-        name: 'MICH',
-        password:"MICH",
+        name: '',
+        password:"",
         image: "",
       });
   
- /*    const submitFunction = async() => {
-        const dataResponse = await fetch('/api/testpost', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              
-            },
-            body: JSON.stringify({ name:'verce', password:'verce', image:'123verce5' }),
-          });
-        
-          return dataResponse;
-    } */
-
+      const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setData({
+          ...data,
+          [e.target.name]: e.target.value
+        });
+      };
+    
     const submitFunction = async  (e: React.FormEvent<HTMLFormElement>) => { 
         e.preventDefault();
     
@@ -56,7 +50,7 @@ const TestFetch = () => {
                       'Content-Type': 'application/json',
                       
                     },
-                    body: JSON.stringify({ name:'live', password:'live-verce', image:newBlob.url }),
+                    body: JSON.stringify({ name:data.name, password:data.password, image:newBlob.url }),
                   });
                   
          
@@ -64,6 +58,8 @@ const TestFetch = () => {
                   if(dataResponse.status !== 200) {
                     console.log('something went wrong')
                   }
+
+                  console.log(dataResponse)
         
               return dataResponse
                 }
@@ -71,9 +67,29 @@ const TestFetch = () => {
     }    
     return (
     <div>TestFetch
-       {/*  <button onClick={submitFunction}>fetch POST</button> */}
+ 
 
         <form onSubmit={submitFunction}>
+        <input
+              required
+              className="form-control"
+              placeholder="Enter name"
+              type="text"
+              name="name"
+              value={data.name}
+              onChange={handleChange}
+              autoComplete="username"/>
+                
+                <input
+              required
+              className="form-control"
+              placeholder="Enter password"
+              type="password"
+              name="password"
+              value={data.password}
+              onChange={handleChange}
+              autoComplete="current-password"/>
+
         <label className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center cursor-pointer">
           <svg
             className="fill-current w-4 h-4 mr-2"
