@@ -64,7 +64,7 @@ export default function AvatarUploadPage() {
           }
      
           setBlob(null)
-
+          console.log(dataResponse)
           return dataResponse
 
      
@@ -92,6 +92,7 @@ export default function AvatarUploadPage() {
             image: "",
           })
          
+          console.log(dataResponse)
 
           return dataResponse
   
