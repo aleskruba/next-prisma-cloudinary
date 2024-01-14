@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, useState,useRef } from 'react';
 import type { PutBlobResult } from '@vercel/blob';
-import { fetchAddContactTEST } from '@/utils';
+import { fetchAddContactTEST, fetchImage } from '@/utils';
 
 const TestFetch = () => {
 
@@ -27,14 +27,14 @@ const TestFetch = () => {
         if (inputFileRef.current?.files) {
      
             let file = inputFileRef.current?.files[0];
-            
-            const imageResponse = await fetch(
+            const imageResponse = await fetchImage(file);
+    /*         const imageResponse = await fetch(
                     `/api/newimage?filename=${file?.name}`,
                     {
                       method: 'POST',
                       body: file,
                     }
-                  );
+                  ); */
               
                 const newBlob = (await imageResponse.json()) as PutBlobResult;
                 
