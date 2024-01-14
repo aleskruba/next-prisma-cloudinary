@@ -26,3 +26,21 @@ export async function fetchImage(file: File | null | undefined)  {
     return dataResponse;
   }
 
+
+  export async function fetchAddContactTEST(
+    name: string,
+    password: string,
+    image?: string
+  ): Promise<Response> {
+    const dataResponse = await fetch('/api/testpost', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        
+      },
+      body: JSON.stringify({ name, password, image }),
+    });
+  
+    return dataResponse;
+  }
+

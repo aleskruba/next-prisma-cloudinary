@@ -2,6 +2,7 @@
 
 import React, { ChangeEvent, useState,useRef } from 'react';
 import type { PutBlobResult } from '@vercel/blob';
+import { fetchAddContactTEST } from '@/utils';
 
 const TestFetch = () => {
 
@@ -44,7 +45,7 @@ const TestFetch = () => {
 
         
                 setData({...data,image:newBlob.url})
-                const dataResponse = await fetch('/api/testpost', {
+      /*           const dataResponse = await fetch('/api/testpost', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
@@ -52,7 +53,14 @@ const TestFetch = () => {
                     },
                     body: JSON.stringify({ name:data.name, password:data.password, image:newBlob.url }),
                   });
-                  
+                   */
+
+                  const dataResponse = await fetchAddContactTEST(
+                    data.name,
+                    data.password,
+                    newBlob.url
+                  );  //custom fetch function  utils/index.ts
+          
          
         
                   if(dataResponse.status !== 200) {
