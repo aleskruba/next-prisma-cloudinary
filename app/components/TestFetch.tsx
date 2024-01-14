@@ -45,13 +45,21 @@ const TestFetch = () => {
 
         
                 setData({...data,image:newBlob.url})
-                const dataResponse = await fetchAddContact(
+           /*      const dataResponse = await fetchAddContact(
                     data.name,
                     data.password,
                     newBlob.url
-                         );  //custom fetch function  utils/index.ts
+                         );  // */
                   
-         
+                         const dataResponse = await fetch('/api/newcontact', {
+                            method: 'POST',
+                            headers: {
+                              'Content-Type': 'application/json',
+                              
+                            },
+                            body: JSON.stringify({ name:data.name, password:data.password, image: newBlob.url}),
+                          });
+                
         
                   if(dataResponse.status !== 200) {
                     console.log('something went wrong')
