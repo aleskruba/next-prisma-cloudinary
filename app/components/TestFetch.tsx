@@ -27,6 +27,8 @@ const TestFetch = () => {
         if (inputFileRef.current?.files) {
      
             let file = inputFileRef.current?.files[0];
+
+            if (file) { 
             const imageResponse = await fetchImage(file);
     /*         const imageResponse = await fetch(
                     `/api/newimage?filename=${file?.name}`,
@@ -77,13 +79,17 @@ const TestFetch = () => {
                     inputFileRef.current.value = '';
                   }
                   setBlob(null)
-                  
+
                   console.log(dataResponse)
         
               return dataResponse
                 }
             }
-    }    
+            else {
+                console.log('no file selected')
+            }
+        }    
+}
     return (
     <div>TestFetch
  
