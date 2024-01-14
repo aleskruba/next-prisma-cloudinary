@@ -1,7 +1,7 @@
 "use client"
 
 import ContactData from '@/types';
-import { fetchAddContactTEST, fetchImage } from '@/utils';
+import { fetchAddContact, fetchImage } from '@/utils';
 import type { PutBlobResult } from '@vercel/blob';
 import React, { ChangeEvent, useState,useRef } from 'react';
 
@@ -42,7 +42,7 @@ export default function AvatarUploadPage() {
 
         setData({...data,image:newBlob.url})
     
-        const dataResponse = await fetchAddContactTEST(
+        const dataResponse = await fetchAddContact(
           data.name,
           data.password,
           newBlob.url
@@ -76,7 +76,7 @@ export default function AvatarUploadPage() {
 
           setData({...data,image:''})
   
-          const dataResponse = await fetchAddContactTEST(
+          const dataResponse = await fetchAddContact(
             data.name,
             data.password,
             data.image
